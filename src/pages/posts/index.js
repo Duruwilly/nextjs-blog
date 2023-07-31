@@ -1,9 +1,8 @@
+import AllPost from "@/components/posts/AllPost";
 import React from "react";
-import { getFeaturedPosts } from "../../lb/post-util";
-import FeaturedPost from "../components/homePage/FeaturedPost";
-import Heroe from "../components/homePage/Heroe";
+import { getAllPosts } from "../../../lb/post-util";
 
-// const DUMMY_BLAST = [
+// const DUMMY_DATA = [
 //   {
 //     slug: 'getting-started-with-nextjs',
 //     title: 'Getting started with NextJS',
@@ -34,23 +33,18 @@ import Heroe from "../components/homePage/Heroe";
 //   }
 // ]
 
-const HomePage = (props) => {
-  return (
-    <>
-      <Heroe />
-      <FeaturedPost posts={props.posts} />
-    </>
-  );
+const PostsPage = (props) => {
+  return <AllPost posts={props.posts} />;
 };
 
 export function getStaticProps() {
-  const featuredPost = getFeaturedPosts();
+  const allPosts = getAllPosts();
 
   return {
     props: {
-      posts: featuredPost,
+      posts: allPosts,
     },
   };
 }
 
-export default HomePage;
+export default PostsPage;
